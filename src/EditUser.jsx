@@ -16,14 +16,14 @@ function EditUser() {
       salary: "",
     },
 
-    onSubmit: async (value, formikBag) => {
+    onSubmit: async (values) => {
       try {
         const putData = await axios.put(
-          `http://localhost:3000/${params.id}`,
-          value
+          `https://forms-b.onrender.com/${params.id}`,
+          values
         );
-        alert("Data Updated Successfully");
-        console.log(putData.data);
+        // console.log(values);
+        alert("Data Updated Success");
       } catch (error) {
         console.log(error);
       }
@@ -32,10 +32,12 @@ function EditUser() {
 
   const editUser = async () => {
     try {
-      var ApiData = await axios.get(`http://localhost:3000/${params.id}`);
+      var ApiData = await axios.get(`https://forms-b.onrender.com/${params.id}`);
+      delete ApiData.data._id;  //delete the key id when getting the data.
 
       useEditdata(ApiData.data);
       formik.setValues(ApiData.data);
+      console.log(ApiData.data)
     } catch (error) {
       console.log(error);
     }

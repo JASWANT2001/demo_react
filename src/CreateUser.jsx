@@ -17,7 +17,7 @@ function CreateUser() {
 
     onSubmit: async (value, formikBag) => {
       try {
-        const data = await axios.post("http://localhost:3000/", value);
+        const data = await axios.post("https://forms-b.onrender.com", value);
         alert("Data Posted");
       } catch (error) {
         alert("Something Went Wrong");

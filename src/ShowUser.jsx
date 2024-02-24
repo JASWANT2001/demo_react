@@ -8,7 +8,7 @@ function ShowUser() {
 
   var Data = async () => {
     try {
-      var Apidata = await axios.get(`http://localhost:3000/${params.id}`);
+      var Apidata = await axios.get(`https://forms-b.onrender.com/${params.id}`);
       setShowuser(Apidata.data);
     } catch (error) {
       console.log(error);

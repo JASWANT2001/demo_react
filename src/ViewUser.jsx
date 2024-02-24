@@ -7,9 +7,9 @@ function ViewUser() {
   const params = useParams;
   var getData = async () => {
     try {
-      const Apidata = await axios.get("http://localhost:3000/");
+      const Apidata = await axios.get("https://forms-b.onrender.com");
       setEmployeeData([...Apidata.data]);
-      // console.log(Apidata.data);
+      // console.log(Apidata.data[0]._id);
     } catch (error) {
       console.log(error);
     }
@@ -21,7 +21,7 @@ function ViewUser() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/${id}`);
+      await axios.delete(`https://forms-b.onrender.com/${id}`);
       alert("Data Deleted")
       getData();
     } catch (error) {
@@ -60,20 +60,20 @@ function ViewUser() {
                 <td>{ele.salary}</td>
                 <td>
                   <Link
-                    className="btn btn-warning mr-2"
-                    to={`/show-user/${ele.id}`}
+                    className="btn btn-warning"
+                    to={`/show-user/${ele._id}`}
                   >
-                    View
+                   Show
                   </Link>
                   <Link
-                    className="btn btn-primary mr-2"
-                    to={`/edit-user/${ele.id}`}
+                    className="btn btn-primary ml-2"
+                    to={`/edit-user/${ele._id}`}
                   >
                     Edit
                   </Link>
                   <button
-                    className="btn btn-danger"
-                    onClick={() => handleDelete(ele.id)}
+                    className="btn btn-danger ml-2"
+                    onClick={() => handleDelete(ele._id)}
                   >
                     Delete
                   </button>
